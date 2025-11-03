@@ -1,5 +1,320 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  font-family: var(--main-font-family), monospace;
+  font-size: var(--main-text-size);
+  line-height: var(--main-line-height);
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.header {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  min-block-size: 100vh;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: var(--main-margin);
+  border-top: 1px solid var(--decor-color);
+  border-right: 1px solid var(--decor-color);
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: var(--main-margin);
+  border-bottom: 1px solid var(--decor-color);
+  border-left: 1px solid var(--decor-color);
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.header__decor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--main-gap);
+  margin: var(--main-margin);
+  padding-inline-end: 9px;
+  color: var(--decor-color);
+  line-height: 25px;
+}
+
+.header__decor::after {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px var(--decor-color);
+  background-color: var(--decor-color);
+  inline-size: 9px;
+  block-size: 9px;
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: center;
+  margin: var(--main-margin);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--main-gap);
+}
+
+.header__theme-menu-button {
+  border: 1px solid transparent;
+  padding: 0 15px 5px;
+  color: var(--decor-color);
+  text-transform: lowercase;
+  background-color: transparent;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--hover-color);
+  cursor: pointer;
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--decor-color);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--decor-color);
+  pointer-events: none;
+}
+
+.header__title {
+  margin-inline: var(--main-margin);
+  color: var(--main-title-color);
+  font-size: var(--title-text-size);
+  line-height: var(--title-line-height);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__text {
+  justify-self: center;
+  align-self: end;
+  margin-inline: var(--main-margin);
+  margin-block-end: 65px;
+  font-weight: bold;
+}
+
+.title-decor {
+  color: var(--title-color);
+  background-color: var(--accent-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--content-gap);
+  margin-block: var(--content-margin);
+  padding-inline: var(--main-margin);
+}
+
+.content__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.content__section-title {
+  color: var(--decor-color);
+  font-size: var(--main-text-size);
+}
+
+.content__section-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.content__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--main-gap);
+}
+
+.content__title {
+  font-size: var(--main-text-size);
+}
+
+.content__sub-title {
+  font-weight: normal;
+}
+
+.content__text {
+  color: var(--text-color);
+}
+
+.content__link {
+  text-decoration: none;
+  text-shadow: 1.5px 1.5px 0 var(--accent-color);
+}
+
+.content__link:hover {
+  border-block-end: 1px solid var(--text-color);
+}
+
+.content__link:focus {
+  outline: none;
+}
+
+.content__link:focus-visible {
+  outline: 1px solid var(--text-color);
+}
+
+.content__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gallery-gap);
+}
+
+.content__gallery-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gallery-gap);
+}
+
+.footer {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 100vh;
+}
+
+.footer__title {
+  color: var(--main-title-color);
+  font-size: var(--title-text-size);
+  line-height: var(--title-line-height);
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+@media (width >= 768px) {
+  :root {
+    --title-text-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    --main-margin: 20px;
+    --content-margin: 60px;
+    --content-gap: 80px;
+    --gallery-gap: 20px;
+  }
+
+  .header {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .header__theme-menu {
+    grid-column: 2;
+  }
+
+  .header__title {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .header__text {
+    grid-column: 2;
+    align-self: center;
+    margin-inline-start: 0;
+  }
+
+  .content__section-one {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .content__section-two {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .content__section-two > .content__section-title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .content__section-two > .content__section-text {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .content__section-three {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .content__gallery-block {
+    display: grid;
+  }
+
+  .content__image {
+    object-fit: cover;
+    object-position: center;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  .content__image-sunset {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .content__image-ice-cream {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  .content__image-tape {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+
+  .content__image-books {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .content__image-street {
+    grid-column: 2 / 4;
+    grid-row: 3;
+  }
+}
+
+@media (width >= 1024px) {
+  .header__theme-menu {
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-self: start;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+
+  .content__section-two > .content__section-text {
+    flex-direction: row;
+  }
+
+  .content__section-two > .content__section-text > .content__block {
+    flex: 1;
+  }
 }
